@@ -10,6 +10,9 @@ namespace P_7._02
     {
         public string mCustomer;
         float mBalance;
+        float<> mWith;
+        float<> mDep;
+
         //constructors
         public BankAccount() {}
         public BankAccount(string name)
@@ -40,14 +43,14 @@ namespace P_7._02
         {
             return mBalance;
         }
-        bool Withdraw (float ammount)
+        public bool Withdraw (float withd)
         {
-            if (ammount < float.MaxValue && mBalance-ammount >= 0)
+            if (withd < float.MaxValue && mBalance-withd >= 0)
             {
-                mBalance -= ammount;
+                mBalance -= withd;
                 return true;
             }
-            else if (ammount < float.MaxValue && mBalance-ammount <0)
+            else if (withd < float.MaxValue && mBalance-withd <0)
 	        {
                 Console.WriteLine("We're sorry, your account does not have overdraft protection.");
 	        }
@@ -57,11 +60,11 @@ namespace P_7._02
                 return false;
 	        }
         }
-        bool Deposit (float ammount)
+        public bool Deposit (float dep)
         {
-            if (ammount >= 0 && ammount + mBalance <= float.MaxValue)
+            if (dep >= 0 && dep + mBalance <= float.MaxValue)
             {
-                mBalance += ammount;
+                mBalance += dep;
                 return true;
             }
             else
@@ -70,5 +73,11 @@ namespace P_7._02
                 return false;
 	        }
         }
+        public void Receipt()
+        {
+            Console.WriteLine(mBalance);
+            Console.WriteLine();
+        }
+
     }
 }
