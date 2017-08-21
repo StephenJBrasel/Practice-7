@@ -24,6 +24,12 @@ namespace P_7._02
         //methods
         public void SetCustName (string name)
         {
+            name.Trim();
+            while (name.Length <= 1)
+	        {
+                Console.WriteLine("Please enter your full name.");
+                name.Trim = Console.ReadLine();
+	        }
             mCustomer = name;
         }
         public string GetCustomer ()
@@ -36,19 +42,33 @@ namespace P_7._02
         }
         bool Withdraw (float ammount)
         {
-            if (ammount >= 0)
+            if (ammount < float.MaxValue && mBalance-ammount >= 0)
             {
-
+                mBalance -= ammount;
+                return true;
             }
-            return false;
+            else if (ammount < float.MaxValue && mBalance-ammount <0)
+	        {
+                Console.WriteLine("We're sorry, your account does not have overdraft protection.");
+	        }
+            else
+	        {
+                Console.WriteLine("We're sorry, this ATM cannot give you that ammount.");
+                return false;
+	        }
         }
         bool Deposit (float ammount)
         {
-            if (ammount >= 0)
+            if (ammount >= 0 && ammount + mBalance <= float.MaxValue)
             {
-
+                mBalance -= ammount;
+                return true;
             }
-            return false;
+            else
+	        {
+                Console.WriteLine("We're sorry, this ATM cannot accept that ammount.");
+                return false;
+	        }
         }
     }
 }
