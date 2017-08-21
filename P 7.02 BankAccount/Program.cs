@@ -10,7 +10,19 @@ namespace P_7._02
     {
         static void Main(string[] args)
         {
-            BankAccount mBank = new BankAccount("Stephen");
+            //TODO
+            //Finalize Input Validation for the Customer Name.
+            Console.WriteLine("Please enter your name. ");
+            try 
+	        {	        
+                string input = Console.ReadLine();
+	        }
+	        catch (Exception)
+	        {
+
+		        throw;
+	        }
+            BankAccount mBank = new BankAccount(input);
 
         }
     }

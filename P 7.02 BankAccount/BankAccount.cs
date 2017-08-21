@@ -61,7 +61,7 @@ namespace P_7._02
         {
             if (ammount >= 0 && ammount + mBalance <= float.MaxValue)
             {
-                mBalance -= ammount;
+                mBalance += ammount;
                 return true;
             }
             else
