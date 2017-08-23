@@ -10,8 +10,8 @@ namespace P_7._02
     {
         public string mCustomer;
         float mBalance;
-        float<> mWith;
-        float<> mDep;
+        List<float> mWith;
+        List<float> mDep;
 
         //constructors
         public BankAccount() {}
@@ -48,6 +48,7 @@ namespace P_7._02
             if (withd < float.MaxValue && mBalance-withd >= 0)
             {
                 mBalance -= withd;
+                mWith.Add(withd);
                 return true;
             }
             else if (withd < float.MaxValue && mBalance-withd <0)
@@ -65,6 +66,7 @@ namespace P_7._02
             if (dep >= 0 && dep + mBalance <= float.MaxValue)
             {
                 mBalance += dep;
+                mDep.Add(dep);
                 return true;
             }
             else
@@ -75,8 +77,15 @@ namespace P_7._02
         }
         public void Receipt()
         {
-            Console.WriteLine(mBalance);
-            Console.WriteLine();
+            Console.WriteLine("Your balance is {0: #.00}",mBalance);
+            for (int i = 0; i < mWith.Count; i++)
+			{
+                Console.WriteLine("Your transactions were: {0: #.00}", mWith[i]);
+			}
+            for (int i = 0; i < mDep.Count; i++)
+			{
+                Console.WriteLine("Your transactions were: {0: #.00}", mDep[i]);
+			}
         }
 
     }
